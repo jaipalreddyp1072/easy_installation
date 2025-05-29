@@ -42,16 +42,13 @@ exit
 sudo cp -r /root/.aws/* /var/lib/jenkins/.aws/
 sudo cp -r /root/.kube/* /var/lib/jenkins/.kube/
 ```
-
-# as a jenkins user
-```
-mkdir -p /var/lib/jenkins/.aws
-mkdir -p /var/lib/jenkins/.kube
-```
 ```
 sudo chown -R jenkins:jenkins /var/lib/jenkins/.aws /var/lib/jenkins/.kube
 ```
 # as a jenkins user
+ ```
+sudo su - jenkins
+```
 ```
 aws eks update-kubeconfig --name cluster-name --region us-east-1
 ```
