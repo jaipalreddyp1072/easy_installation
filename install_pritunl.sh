@@ -42,3 +42,4 @@ systemctl enable --now pritunl
 echo "Installation complete."
 systemctl status pritunl --no-pager
 
+
