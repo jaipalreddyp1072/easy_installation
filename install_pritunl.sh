@@ -1,45 +1,44 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+# 1. Update and install prerequisites
+echo "=== 1. Update system and install prerequisites ==="
+sudo apt update -y
+sudo apt install -y gnupg curl lsb-release ca-certificates apt-transport-https
 
-echo "Updating system packages..."
-apt update && apt upgrade -y
+# 2. Clean up any old Pritunl entries
+echo
+echo "=== 2. Remove old Pritunl repo/key if present ==="
+sudo rm -f /etc/apt/sources.list.d/pritunl.list
+sudo rm -f /usr/share/keyrings/pritunl.gpg
 
-echo "Installing dependencies..."
-apt install -y curl gnupg apt-transport-https ca-certificates lsb-release
+# 3. Add the Pritunl APT repository
+echo
+echo "=== 3. Add Pritunl repository for jammy ==="
+sudo tee /etc/apt/sources.list.d/pritunl.list > /dev/null <<EOF
+deb [signed-by=/usr/share/keyrings/pritunl.gpg] https://repo.pritunl.com/stable/apt $(lsb_release -cs) main
+EOF
 
-echo "Adding MongoDB GPG key..."
-curl -fsSL https://pgp.mongodb.com/server-6.0.asc | \
-  gpg --dearmor -o /usr/share/keyrings/mongodb-server-6.0.gpg
+# 4. Fetch and install the Pritunl GPG key
+echo
+echo "=== 4. Fetch and install Pritunl GPG key ==="
+curl -fsSL https://raw.githubusercontent.com/pritunl/pgp/master/pritunl_repo_pub.asc \
+  | sudo gpg --dearmor -o /usr/share/keyrings/pritunl.gpg
 
-echo "Adding MongoDB 6.0 repo for Ubuntu Jammy..."
-echo "deb [signed-by=/usr/share/keyrings/mongodb-server-6.0.gpg] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/6.0 multiverse" \
-  | tee /etc/apt/sources.list.d/mongodb-org-6.0.list
+# 5. Update APT and install Pritunl
+echo
+echo "=== 5. Update APT and install Pritunl ==="
+sudo apt update -y
+sudo apt install -y pritunl
 
-echo "Adding Pritunl repo..."
-echo "deb https://repo.pritunl.com/stable/apt jammy main" | tee /etc/apt/sources.list.d/pritunl.list
+# 6. Enable and start the Pritunl service
+echo
+echo "=== 6. Enable & start Pritunl service ==="
+sudo systemctl enable pritunl
+sudo systemctl start pritunl
 
-echo "Adding Pritunl GPG key..."
-curl -fsSL https://raw.githubusercontent.com/pritunl/pritunl/master/keys/pritunl_repo_pub.asc | \
-  gpg --dearmor -o /usr/share/keyrings/pritunl-archive-keyring.gpg || true
-
-# Use backup key method if above fails (GitHub sometimes changes links)
-if [ ! -f /usr/share/keyrings/pritunl-archive-keyring.gpg ]; then
-  curl -fsSL https://repo.pritunl.com/stable/apt/keys.asc | \
-    gpg --dearmor -o /usr/share/keyrings/pritunl-archive-keyring.gpg
-fi
-
-echo "Updating APT cache..."
-apt update
-
-echo "Installing MongoDB and Pritunl..."
-apt install -y mongodb-org pritunl
-
-echo "Enabling and starting services..."
-systemctl enable --now mongod
-systemctl enable --now pritunl
-
-echo "Installation complete."
-systemctl status pritunl --no-pager
-
-
+echo
+echo "✅ Pritunl has been installed and started successfully!"
+echo "Access the web UI at https://<YOUR_SERVER_IP>/"
+echo "Get your setup key with:    sudo pritunl setup-key"
+echo "Get your default password with: sudo pritunl default-password"
