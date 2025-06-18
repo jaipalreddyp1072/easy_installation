@@ -1,3 +1,31 @@
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_awscli.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_awscli.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_eksctl.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_eksctl.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_kubectl.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_kubectl.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_maven.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_maven.sh
+```
+```
+curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_pritunl.sh
+wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_pritunl.sh
+```
 # After copying the git repository
 ```
 cd to_run_and-_install_tools
