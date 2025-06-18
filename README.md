@@ -1,11 +1,16 @@
+to install respectiv file from this repository
+
+AWSCLI
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_awscli.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_awscli.sh
 ```
+EKSCTL
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_eksctl.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_eksctl.sh
 ```
+HELM
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
@@ -14,14 +19,17 @@ wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/maste
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
 ```
+KUBECTL
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_kubectl.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_kubectl.sh
 ```
+MAVEN
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_maven.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_maven.sh
 ```
+PRITUNL
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_pritunl.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_pritunl.sh
