@@ -15,6 +15,7 @@ HELM
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_helm.sh
 ```
+JENKINS
 ```
 curl -O https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
 wget https://raw.githubusercontent.com/jaipalrdy/to_run_and-_install_tools/master/install_jenkins.sh
