@@ -8,7 +8,7 @@ wget https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/i
 EKSCTL
 ```
 curl -O https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_eksctl.sh
-wget https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_eksctl.sh
+wget https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_eksctl.shSH
 ```
 HELM
 ```
