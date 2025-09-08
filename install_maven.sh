@@ -1,21 +1,35 @@
 #!/bin/bash
-
 set -e
 
-echo "Updating package lists..."
-apt update
+# Install JDK 21
+JAVA_VERSION=21
+JAVA_DIR=$HOME/java
+mkdir -p $JAVA_DIR
 
-echo "Installing OpenJDK 21..."
-apt install -y openjdk-21-jdk
+echo "Downloading OpenJDK $JAVA_VERSION..."
+curl -L https://download.java.net/java/GA/jdk${JAVA_VERSION}/latest/binaries/openjdk-${JAVA_VERSION}_linux-x64_bin.tar.gz -o jdk.tar.gz
+tar -xzf jdk.tar.gz -C $JAVA_DIR --strip-components=1
 
-echo "Verifying Java installation..."
+export PATH=$JAVA_DIR/bin:$PATH
+
+echo "Java installed at $JAVA_DIR"
 java -version
 javac -version
 
-echo "Installing Maven..."
-apt install -y maven
+# Install Maven
+MAVEN_VERSION=3.9.9
+MAVEN_DIR=$HOME/maven
+mkdir -p $MAVEN_DIR
 
-echo "Verifying Maven installation..."
+echo "Downloading Apache Maven $MAVEN_VERSION..."
+curl -sL https://downloads.apache.org/maven/maven-3/$MAVEN_VERSION/binaries/apache-maven-$MAVEN_VERSION-bin.tar.gz -o maven.tar.gz
+tar -xzf maven.tar.gz -C $MAVEN_DIR --strip-components=1
+
+export PATH=$MAVEN_DIR/bin:$PATH
+
+echo "Maven installed at $MAVEN_DIR"
 mvn -version
-echo "Installation of OpenJDK 21 and Maven is complete!"
+
+echo "✅ Installation of OpenJDK 21 and Maven is complete!"
+
 
