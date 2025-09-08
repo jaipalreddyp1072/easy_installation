@@ -1,30 +1,26 @@
 #!/bin/bash
-
-# Exit on any error
 set -e
 
-echo "Updating system packages..."
+echo "🔹 Updating package index..."
 sudo apt update -y
 
-echo "Installing OpenJDK 21..."
-sudo apt install openjdk-21-jre-headless -y
+echo "🔹 Installing prerequisites..."
+sudo apt install -y curl gnupg fontconfig openjdk-21-jdk
 
-echo "Verifying Java installation..."
-java -version
+echo "🔹 Adding Jenkins GPG key..."
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 
-echo "Adding Jenkins key and repository..."
-sudo mkdir -p /etc/apt/keyrings
-sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
-  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
-
-echo "Adding Jenkins source list..."
-echo "deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+echo "🔹 Adding Jenkins repository..."
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
   /etc/apt/sources.list.d/jenkins.list > /dev/null
 
-echo "Updating package index..."
-sudo apt-get update
+echo "🔹 Updating package index with Jenkins repo..."
+sudo apt update -y
 
-echo "Installing Jenkins..."
-sudo apt-get install jenkins -y
+echo "🔹 Installing/Upgrading Jenkins (latest stable)..."
+sudo apt install -y jenkins
 
-echo "Jenkins installation complete."
+echo "✅ Jenkins installation/upgrade complete."
+echo "👉 You can check version with:  systemctl status jenkins"
