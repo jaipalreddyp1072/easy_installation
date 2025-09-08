@@ -2,7 +2,8 @@ to install respectiv file from this repository
 
 AWSCLI
 ```
-curl -O https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_awscli.sh
+curl -O https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_awscli.shs
+s
 wget https://raw.githubusercontent.com/jpl-ry/to_run_and-_install_tools/master/install_awscli.sh
 ```
 EKSCTL
